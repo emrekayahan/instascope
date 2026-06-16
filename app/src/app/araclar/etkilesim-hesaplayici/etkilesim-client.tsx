@@ -8,11 +8,26 @@ export default function EtkilesimClient() {
   const [followers, setFollowers] = useState('');
   const [likes, setLikes] = useState('');
   const [comments, setComments] = useState('');
+  const [industry, setIndustry] = useState('genel');
   const [result, setResult] = useState<number | null>(null);
   const [statusText, setStatusText] = useState('');
   const [statusColor, setStatusColor] = useState('');
+  const [benchmarkResult, setBenchmarkResult] = useState('');
   const [copied, setCopied] = useState(false);
   const [showShareOptions, setShowShareOptions] = useState(false);
+
+  // Newsletter States
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [newsletterMessage, setNewsletterMessage] = useState('');
+
+  const benchmarks: { [key: string]: { name: string, rate: number } } = {
+    genel: { name: 'Genel', rate: 2.0 },
+    eticaret: { name: 'E-Ticaret / Marka', rate: 1.5 },
+    moda: { name: 'Moda / Güzellik', rate: 3.0 },
+    yemek: { name: 'Yemek / Gastronomi', rate: 4.5 },
+    spor: { name: 'Spor / Sağlıklı Yaşam', rate: 3.5 }
+  };
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,6 +64,19 @@ export default function EtkilesimClient() {
     setStatusText(calculatedStatusText);
     setStatusColor(calculatedStatusColor);
 
+    // Calculate industry comparison
+    const selectedBenchmark = benchmarks[industry] || benchmarks.genel;
+    const diff = er - selectedBenchmark.rate;
+    let benchmarkText = '';
+    if (diff > 0) {
+      benchmarkText = `Tebrikler! Etkileşim oranınız, ${selectedBenchmark.name} sektörü ortalamasının (%${selectedBenchmark.rate}) %${diff.toFixed(2)} üzerindedir.`;
+    } else if (diff < 0) {
+      benchmarkText = `Etkileşim oranınız, ${selectedBenchmark.name} sektörü ortalamasının (%${selectedBenchmark.rate}) %${Math.abs(diff).toFixed(2)} altındadır. Gönderi kalitenizi veya etkileşim saatlerinizi gözden geçirmelisiniz.`;
+    } else {
+      benchmarkText = `Etkileşim oranınız, ${selectedBenchmark.name} sektörü ortalaması (%${selectedBenchmark.rate}) ile tam olarak aynıdır.`;
+    }
+    setBenchmarkResult(benchmarkText);
+
     // Save to history if logged in
     const user = auth.currentUser;
     if (user) {
@@ -65,13 +93,43 @@ export default function EtkilesimClient() {
             hour: '2-digit',
             minute: '2-digit'
           }),
-          inputs: { followers: f, likes: l, comments: c },
-          result: { er, statusText: calculatedStatusText }
+          inputs: { followers: f, likes: l, comments: c, industry },
+          result: { er, statusText: calculatedStatusText, benchmarkText }
         };
         localStorage.setItem(historyKey, JSON.stringify([newItem, ...existingHistory]));
       } catch (err) {
         console.error('Error saving history:', err);
       }
+    }
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+
+    setNewsletterStatus('loading');
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      if (response.ok) {
+        setNewsletterStatus('success');
+        setNewsletterMessage('Bültene başarıyla kaydoldunuz! Teşekkür ederiz.');
+        setNewsletterEmail('');
+      } else {
+        const data = await response.json();
+        setNewsletterStatus('error');
+        setNewsletterMessage(data.error || 'Kayıt sırasında bir hata oluştu.');
+      }
+    } catch (err) {
+      console.error(err);
+      setNewsletterStatus('error');
+      setNewsletterMessage('Bağlantı hatası. Lütfen tekrar deneyin.');
     }
   };
 
@@ -101,6 +159,22 @@ export default function EtkilesimClient() {
         </div>
 
         <form onSubmit={handleCalculate} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div className="form-group">
+            <label className="form-label">Sektörünüz</label>
+            <select
+              className="form-input"
+              value={industry}
+              onChange={(e) => setIndustry(e.target.value)}
+              style={{ background: 'rgba(0, 0, 0, 0.3)', color: 'white', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '8px', padding: '0.75rem 1rem', width: '100%', outline: 'none' }}
+            >
+              <option value="genel" style={{ background: '#0a0a0a' }}>Genel (Ortalama: %2.0)</option>
+              <option value="eticaret" style={{ background: '#0a0a0a' }}>E-Ticaret / Marka (Ortalama: %1.5)</option>
+              <option value="moda" style={{ background: '#0a0a0a' }}>Moda / Güzellik (Ortalama: %3.0)</option>
+              <option value="yemek" style={{ background: '#0a0a0a' }}>Yemek / Gastronomi (Ortalama: %4.5)</option>
+              <option value="spor" style={{ background: '#0a0a0a' }}>Spor / Sağlıklı Yaşam (Ortalama: %3.5)</option>
+            </select>
+          </div>
+
           <div className="form-group">
             <label className="form-label">Toplam Takipçi Sayısı</label>
             <input
@@ -155,11 +229,127 @@ export default function EtkilesimClient() {
             marginTop: '1rem',
             animation: 'fadeIn 0.5s ease-out'
           }}>
-            <h3 style={{ fontSize: '1.25rem', color: 'hsl(var(--text-secondary))' }}>Etkileşim Oranınız</h3>
-            <div style={{ fontSize: '3.5rem', fontWeight: 800, color: statusColor }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'hsl(var(--text-secondary))', margin: 0 }}>Etkileşim Oranınız</h3>
+            <div style={{ fontSize: '3.5rem', fontWeight: 800, color: statusColor, lineHeight: 1 }}>
               %{result}
             </div>
-            <p style={{ fontWeight: 600, color: 'white' }}>{statusText}</p>
+            <p style={{ fontWeight: 600, color: 'white', margin: 0 }}>{statusText}</p>
+
+            {/* Sektörel Karşılaştırma Grafiği */}
+            <div style={{
+              marginTop: '1rem',
+              padding: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.01)',
+              border: '1px solid rgba(255, 255, 255, 0.03)',
+              borderRadius: '12px',
+              textAlign: 'left'
+            }}>
+              <h4 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'white', fontWeight: 600, marginTop: 0 }}>Sektörel Karşılaştırma</h4>
+              <p style={{ fontSize: '0.9rem', color: 'hsl(var(--text-secondary))', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+                {benchmarkResult}
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {/* Kullanıcının Barı */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.25rem' }}>
+                    <span style={{ color: 'white', fontWeight: 600 }}>Sizin Oranınız</span>
+                    <span style={{ color: statusColor, fontWeight: 700 }}>%{result}</span>
+                  </div>
+                  <div style={{ width: '100%', height: '8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '9999px', overflow: 'hidden' }}>
+                    <div style={{ 
+                      width: `${Math.min((result / 10) * 100, 100)}%`, 
+                      height: '100%', 
+                      background: statusColor, 
+                      borderRadius: '9999px',
+                      transition: 'width 1s ease-out'
+                    }} />
+                  </div>
+                </div>
+
+                {/* Sektör Barı */}
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.25rem' }}>
+                    <span style={{ color: 'hsl(var(--text-secondary))' }}>{benchmarks[industry]?.name || 'Genel'} Ortalaması</span>
+                    <span style={{ color: 'hsl(var(--text-muted))', fontWeight: 600 }}>%{benchmarks[industry]?.rate || 2.0}</span>
+                  </div>
+                  <div style={{ width: '100%', height: '8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '9999px', overflow: 'hidden' }}>
+                    <div style={{ 
+                      width: `${Math.min(((benchmarks[industry]?.rate || 2.0) / 10) * 100, 100)}%`, 
+                      height: '100%', 
+                      background: 'rgba(255, 255, 255, 0.25)', 
+                      borderRadius: '9999px',
+                      transition: 'width 1s ease-out'
+                    }} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bağlamsal E-Posta Bülteni Teklifi */}
+            <div style={{
+              marginTop: '1rem',
+              padding: '1.5rem',
+              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)',
+              border: '1px solid rgba(124, 58, 237, 0.15)',
+              borderRadius: '16px',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem'
+            }}>
+              <div>
+                <h4 style={{ fontSize: '1.15rem', color: 'white', fontWeight: 700, margin: 0 }}>
+                  Instagram Büyüme Rehberini Ücretsiz Alın!
+                </h4>
+                <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-secondary))', marginTop: '0.5rem', lineHeight: 1.4, margin: '0.5rem 0 0 0' }}>
+                  Haftalık algoritma analizleri, en iyi paylaşım saatleri güncellemeleri ve gizli büyüme taktikleri doğrudan e-postanıza gelsin.
+                </p>
+              </div>
+
+              {newsletterStatus !== 'success' ? (
+                <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                  <input
+                    type="email"
+                    required
+                    placeholder="E-posta adresiniz"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    style={{
+                      flex: '1 1 250px',
+                      padding: '0.75rem 1rem',
+                      borderRadius: '8px',
+                      background: 'rgba(0, 0, 0, 0.3)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      color: 'white',
+                      fontSize: '0.9rem',
+                      outline: 'none'
+                    }}
+                  />
+                  <button 
+                    type="submit" 
+                    disabled={newsletterStatus === 'loading'}
+                    className="btn-primary" 
+                    style={{ 
+                      padding: '0.75rem 1.5rem', 
+                      fontSize: '0.9rem',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {newsletterStatus === 'loading' ? 'Kaydediliyor...' : 'Kaydol'}
+                  </button>
+                </form>
+              ) : (
+                <div style={{ color: '#22c55e', fontSize: '0.95rem', fontWeight: 600 }}>
+                  {newsletterMessage}
+                </div>
+              )}
+              {newsletterStatus === 'error' && (
+                <div style={{ color: '#ef4444', fontSize: '0.85rem', fontWeight: 500 }}>
+                  {newsletterMessage}
+                </div>
+              )}
+            </div>
             
             {/* Share Result Button */}
             <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>

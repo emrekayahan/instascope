@@ -10,5 +10,29 @@ export const metadata: Metadata = {
 };
 
 export default function EtkilesimHesaplayici() {
-  return <EtkilesimClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Instagram Etkileşim Oranı Hesaplayıcı",
+    "url": "https://instascope.com.tr/araclar/etkilesim-hesaplayici",
+    "description": "Takipçi, beğeni ve yorum sayılarınızı girerek profilinizin gerçek etkileşim oranını anında ve şifresiz olarak hesaplayın.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <EtkilesimClient />
+    </>
+  );
 }

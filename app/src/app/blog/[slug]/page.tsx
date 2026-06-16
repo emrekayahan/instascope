@@ -7,6 +7,7 @@ import type { Metadata } from 'next';
 interface PostContent {
   title: string;
   date: string;
+  publishedTime: string;
   readTime: string;
   description: string;
   content: React.ReactNode;
@@ -16,6 +17,7 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   'instagram-algoritmasi-nasil-calisir-2026': {
     title: 'Instagram Algoritması Nasıl Çalışır (2026 Güncel Rehber)',
     date: '15 Haziran 2026',
+    publishedTime: '2026-06-15T09:00:00.000Z',
     readTime: '6 dk okuma',
     description: 'Instagram reels, hikayeler ve ana sayfa algoritmasının arkasındaki detaylı mekanizmayı ve etkileşim artırma yöntemlerini inceleyin.',
     content: (
@@ -38,7 +40,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'organik-takipci-artirma-yontemleri': {
     title: 'Organik Takipçi Artırma Yöntemleri ve Stratejiler',
-    date: '10 Haziran 2026',
+    date: '12 Haziran 2026',
+    publishedTime: '2026-06-12T09:00:00.000Z',
     readTime: '8 dk okuma',
     description: 'Bot hesaplar yerine tamamen organik, sadık ve aktif bir instagram takipçi kitlesi oluşturmanın 10 bilimsel adımı.',
     content: (
@@ -55,7 +58,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-etkilesim-orani-nedir-nasil-hesaplanir': {
     title: 'Instagram Etkileşim Oranı Nedir, Nasıl Hesaplanır?',
-    date: '16 Haziran 2026',
+    date: '9 Haziran 2026',
+    publishedTime: '2026-06-09T09:00:00.000Z',
     readTime: '5 dk okuma',
     description: 'Etkileşim oranı (Engagement Rate) hesabınızın gücünü gösterir. En basit hesaplama formülleri ve sektörel etkileşim kıyaslamaları.',
     content: (
@@ -76,7 +80,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   '2026-en-iyi-instagram-hashtag-stratejileri': {
     title: "2026'da En İyi Instagram Hashtag Stratejileri",
-    date: '16 Haziran 2026',
+    date: '6 Haziran 2026',
+    publishedTime: '2026-06-06T09:00:00.000Z',
     readTime: '7 dk okuma',
     description: 'Algoritmanın değişen hashtag politikalarını yakalayın. Gönderi türüne göre kaç adet ve hangi tür hashtag kullanmanız gerektiğini öğrenin.',
     content: (
@@ -93,7 +98,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-reels-algoritmasini-anlamak': {
     title: 'Instagram Reels Algoritmasını Anlamak',
-    date: '16 Haziran 2026',
+    date: '3 Haziran 2026',
+    publishedTime: '2026-06-03T09:00:00.000Z',
     readTime: '6 dk okuma',
     description: 'Keşfet sayfasına düşmenin, izlenme sürelerini artırmanın ve viral Reels videoları hazırlamanın arkasındaki algoritma kuralları.',
     content: (
@@ -110,7 +116,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'takipci-takip-orani-neden-onemli': {
     title: 'Takipçi/Takip Oranı Neden Önemli?',
-    date: '16 Haziran 2026',
+    date: '31 Mayıs 2026',
+    publishedTime: '2026-05-31T09:00:00.000Z',
     readTime: '4 dk okuma',
     description: 'Hesabınızın spam veya bot gibi görünmemesi için takipçi / takip edilen oranını nasıl dengede tutmalısınız? İşte altın oran.',
     content: (
@@ -127,7 +134,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagramda-shadowban-nasil-anlasilir-ve-onlenir': {
     title: "Instagram'da Shadowban Nasıl Anlaşılır ve Önlenir?",
-    date: '16 Haziran 2026',
+    date: '28 Mayıs 2026',
+    publishedTime: '2026-05-28T09:00:00.000Z',
     readTime: '8 dk okuma',
     description: 'Hesabınızın erişimleri aniden düştüyse shadowban riski altındasınız. Nedenleri, kontrol etme yöntemi ve ban kaldırma adımları.',
     content: (
@@ -148,7 +156,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'icerik-takvimi-nasil-olusturulur': {
     title: 'İçerik Takvimi Nasıl Oluşturulur?',
-    date: '16 Haziran 2026',
+    date: '25 Mayıs 2026',
+    publishedTime: '2026-05-25T09:00:00.000Z',
     readTime: '5 dk okuma',
     description: 'Düzenli paylaşım yapmak başarının anahtarıdır. Aylık sosyal medya planlaması yapmanızı sağlayacak içerik takvimi hazırlama rehberi.',
     content: (
@@ -169,7 +178,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-biyografi-linki-nasil-optimize-edilir': {
     title: 'Instagram Biyografi Linki Nasıl Optimize Edilir?',
-    date: '17 Haziran 2026',
+    date: '22 Mayıs 2026',
+    publishedTime: '2026-05-22T09:00:00.000Z',
     readTime: '5 dk okuma',
     description: 'Profilinizi ziyaret eden kullanıcıları takipçiye dönüştürmek için biyografi bağlantınızı nasıl tasarlamalısınız? En iyi taktikler.',
     content: (
@@ -190,7 +200,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-reels-izlenmesini-artirmanin-7-yolu': {
     title: 'Instagram Reels İzlenmesini Artırmanın 7 Yolu',
-    date: '17 Haziran 2026',
+    date: '19 Mayıs 2026',
+    publishedTime: '2026-05-19T09:00:00.000Z',
     readTime: '6 dk okuma',
     description: 'Reels izlenme sayılarınızı katlamak için uygulayabileceğiniz 7 pratik strateji. Kanca kullanımı, müzik seçimi ve süre ayarı.',
     content: (
@@ -212,7 +223,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'bot-takipci-vs-organik-takipci': {
     title: 'Bot Takipçi vs Organik Takipçi: Hesabınıza Zararları',
-    date: '17 Haziran 2026',
+    date: '16 Mayıs 2026',
+    publishedTime: '2026-05-16T09:00:00.000Z',
     readTime: '6 dk okuma',
     description: 'Bot takipçi satın almanın profilinizin erişimini nasıl sıfırladığını ve algoritmanın neden cezalandırdığını teknik verilerle inceleyin.',
     content: (
@@ -229,7 +241,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-story-etkilesimi-nasil-artirilir': {
     title: 'Instagram Story Etkileşimi Nasıl Artırılır?',
-    date: '17 Haziran 2026',
+    date: '13 Mayıs 2026',
+    publishedTime: '2026-05-13T09:00:00.000Z',
     readTime: '5 dk okuma',
     description: 'Hikayelerinizin görüntüleme sayılarını artıracak çıkartma kullanımı, anketler, soru-cevaplar ve algoritma tetikleme yöntemleri.',
     content: (
@@ -247,7 +260,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagramda-kesfete-dusme-taktikleri': {
     title: "Instagram'da Keşfet'e Düşme Taktikleri",
-    date: '17 Haziran 2026',
+    date: '10 Mayıs 2026',
+    publishedTime: '2026-05-10T09:00:00.000Z',
     readTime: '7 dk okuma',
     description: 'Gönderilerinizin Keşfet sayfasına çıkması ve takipçi olmayan kitleye ulaşması için yapılması gereken anahtar optimizasyonlar.',
     content: (
@@ -261,7 +275,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'mikro-influencer-nedir-markalar-neden-tercih-eder': {
     title: 'Mikro Influencer Nedir, Markalar Neden Tercih Eder?',
-    date: '17 Haziran 2026',
+    date: '7 Mayıs 2026',
+    publishedTime: '2026-05-07T09:00:00.000Z',
     readTime: '5 dk okuma',
     description: '10k-50k takipçi aralığındaki hesapların yüksek etkileşim güçleri ve markaların reklam iş birliklerinde onları seçme nedenleri.',
     content: (
@@ -275,7 +290,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-hesap-guvenligi-ve-iki-faktorlu-dogrulama': {
     title: 'Instagram Hesap Güvenliği ve İki Faktörlü Doğrulama',
-    date: '17 Haziran 2026',
+    date: '4 Mayıs 2026',
+    publishedTime: '2026-05-04T09:00:00.000Z',
     readTime: '4 dk okuma',
     description: 'Hesabınızın çalınmasını önleyecek güvenlik önlemleri, iki faktörlü doğrulama ayarları ve kimlik avı saldırılarından korunma.',
     content: (
@@ -293,7 +309,8 @@ const POSTS_DB: { [slug: string]: PostContent } = {
   },
   'instagram-insights-istatistikler-nasil-okunur': {
     title: 'Instagram Insights (İstatistikler) Nasıl Okunur?',
-    date: '17 Haziran 2026',
+    date: '1 Mayıs 2026',
+    publishedTime: '2026-05-01T09:00:00.000Z',
     readTime: '6 dk okuma',
     description: 'Profil istatistiklerinizdeki erişim, etkileşim, gösterim ve demografik verileri doğru okuyarak içerik stratejinizi geliştirin.',
     content: (
@@ -336,7 +353,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: post.description,
       url: `${baseUrl}/blog/${slug}`,
       type: 'article',
-      publishedTime: '2026-06-16T00:00:00.000Z',
+      publishedTime: post.publishedTime,
       authors: ['Emre Kayahan'],
     },
     twitter: {
@@ -360,8 +377,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
-    "datePublished": "2026-06-16T00:00:00.000Z",
-    "dateModified": "2026-06-16T00:00:00.000Z",
+    "datePublished": post.publishedTime,
+    "dateModified": post.publishedTime,
     "author": {
       "@type": "Person",
       "name": "Emre Kayahan",
@@ -384,9 +401,28 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       </div>
 
       <article className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: 1.8 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: 'hsl(var(--text-muted))', borderBottom: '1px solid rgba(255, 255, 255, 0.05)', paddingBottom: '1rem' }}>
-          <span>{post.date}</span>
-          <span>{post.readTime}</span>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          fontSize: '0.85rem', 
+          color: 'hsl(var(--text-muted))', 
+          borderBottom: '1px solid rgba(255, 255, 255, 0.05)', 
+          paddingBottom: '1rem',
+          flexWrap: 'wrap',
+          gap: '0.5rem'
+        }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <Calendar size={14} /> {post.date}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+              <Clock size={14} /> {post.readTime}
+            </span>
+          </div>
+          <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            <User size={14} /> Emre Kayahan
+          </span>
         </div>
 
         <h1 className="gradient-text" style={{ fontSize: '2.5rem', lineHeight: 1.25, fontWeight: 800 }}>

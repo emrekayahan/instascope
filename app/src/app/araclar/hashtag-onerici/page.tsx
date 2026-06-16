@@ -10,5 +10,29 @@ export const metadata: Metadata = {
 };
 
 export default function HashtagOnerici() {
-  return <HashtagClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Instagram Hashtag Önerici & Analizi",
+    "url": "https://instascope.com.tr/araclar/hashtag-onerici",
+    "description": "İçerik kategorinize göre en popüler, etkileşimi yüksek ve spam filtresine takılmayan hashtag kombinasyonlarını ücretsiz keşfedin.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TRY"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <HashtagClient />
+    </>
+  );
 }

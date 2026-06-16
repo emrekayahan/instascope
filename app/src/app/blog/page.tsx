@@ -24,105 +24,105 @@ export default function Blog() {
       title: 'Organik Takipçi Artırma Yöntemleri ve Stratejiler',
       slug: 'organik-takipci-artirma-yontemleri',
       description: 'Bot hesaplar yerine tamamen organik, sadık ve aktif bir instagram takipçi kitlesi oluşturmanın 10 bilimsel adımı.',
-      date: '10 Haziran 2026',
+      date: '12 Haziran 2026',
       readTime: '8 dk okuma'
     },
     {
       title: 'Instagram Etkileşim Oranı Nedir, Nasıl Hesaplanır?',
       slug: 'instagram-etkilesim-orani-nedir-nasil-hesaplanir',
       description: 'Etkileşim oranı (Engagement Rate) hesabınızın gücünü gösterir. En basit hesaplama formülleri ve sektörel etkileşim kıyaslamaları.',
-      date: '16 Haziran 2026',
+      date: '9 Haziran 2026',
       readTime: '5 dk okuma'
     },
     {
       title: "2026'da En İyi Instagram Hashtag Stratejileri",
       slug: '2026-en-iyi-instagram-hashtag-stratejileri',
       description: 'Algoritmanın değişen hashtag politikalarını yakalayın. Gönderi türüne göre kaç adet ve hangi tür hashtag kullanmanız gerektiğini öğrenin.',
-      date: '16 Haziran 2026',
+      date: '6 Haziran 2026',
       readTime: '7 dk okuma'
     },
     {
       title: 'Instagram Reels Algoritmasını Anlamak',
       slug: 'instagram-reels-algoritmasini-anlamak',
       description: 'Keşfet sayfasına düşmenin, izlenme sürelerini artırmanın ve viral Reels videoları hazırlamanın arkasındaki algoritma kuralları.',
-      date: '16 Haziran 2026',
+      date: '3 Haziran 2026',
       readTime: '6 dk okuma'
     },
     {
       title: 'Takipçi/Takip Oranı Neden Önemli?',
       slug: 'takipci-takip-orani-neden-onemli',
       description: 'Hesabınızın spam veya bot gibi görünmemesi için takipçi / takip edilen oranını nasıl dengede tutmalısınız? İşte altın oran.',
-      date: '16 Haziran 2026',
+      date: '31 Mayıs 2026',
       readTime: '4 dk okuma'
     },
     {
       title: "Instagram'da Shadowban Nasıl Anlaşılır ve Önlenir?",
       slug: 'instagramda-shadowban-nasil-anlasilir-ve-onlenir',
       description: 'Hesabınızın erişimleri aniden düştüyse shadowban riski altındasınız. Nedenleri, kontrol etme yöntemi ve ban kaldırma adımları.',
-      date: '16 Haziran 2026',
+      date: '28 Mayıs 2026',
       readTime: '8 dk okuma'
     },
     {
       title: 'İçerik Takvimi Nasıl Oluşturulur?',
       slug: 'icerik-takvimi-nasil-olusturulur',
       description: 'Düzenli paylaşım yapmak başarının anahtarıdır. Aylık sosyal medya planlaması yapmanızı sağlayacak içerik takvimi hazırlama rehberi.',
-      date: '16 Haziran 2026',
+      date: '25 Mayıs 2026',
       readTime: '5 dk okuma'
     },
     {
       title: 'Instagram Biyografi Linki Nasıl Optimize Edilir?',
       slug: 'instagram-biyografi-linki-nasil-optimize-edilir',
       description: 'Profilinizi ziyaret eden kullanıcıları takipçiye dönüştürmek için biyografi bağlantınızı nasıl tasarlamalısınız? En iyi taktikler.',
-      date: '17 Haziran 2026',
+      date: '22 Mayıs 2026',
       readTime: '5 dk okuma'
     },
     {
       title: 'Instagram Reels İzlenmesini Artırmanın 7 Yolu',
       slug: 'instagram-reels-izlenmesini-artirmanin-7-yolu',
       description: 'Reels izlenme sayılarınızı katlamak için uygulayabileceğiniz 7 pratik strateji. Kanca kullanımı, müzik seçimi ve süre ayarı.',
-      date: '17 Haziran 2026',
+      date: '19 Mayıs 2026',
       readTime: '6 dk okuma'
     },
     {
       title: 'Bot Takipçi vs Organik Takipçi: Hesabınıza Zararları',
       slug: 'bot-takipci-vs-organik-takipci',
       description: 'Bot takipçi satın almanın profilinizin erişimini nasıl sıfırladığını ve algoritmanın neden cezalandırdığını teknik verilerle inceleyin.',
-      date: '17 Haziran 2026',
+      date: '16 Mayıs 2026',
       readTime: '6 dk okuma'
     },
     {
       title: 'Instagram Story Etkileşimi Nasıl Artırılır?',
       slug: 'instagram-story-etkilesimi-nasil-artirilir',
       description: 'Hikayelerinizin görüntüleme sayılarını artıracak çıkartma kullanımı, anketler, soru-cevaplar ve algoritma tetikleme yöntemleri.',
-      date: '17 Haziran 2026',
+      date: '13 Mayıs 2026',
       readTime: '5 dk okuma'
     },
     {
       title: "Instagram'da Keşfet'e Düşme Taktikleri",
       slug: 'instagramda-kesfete-dusme-taktikleri',
       description: 'Gönderilerinizin Keşfet sayfasına çıkması ve takipçi olmayan kitleye ulaşması için yapılması gereken anahtar optimizasyonlar.',
-      date: '17 Haziran 2026',
+      date: '10 Mayıs 2026',
       readTime: '7 dk okuma'
     },
     {
       title: 'Mikro Influencer Nedir, Markalar Neden Tercih Eder?',
       slug: 'mikro-influencer-nedir-markalar-neden-tercih-eder',
       description: '10k-50k takipçi aralığındaki hesapların yüksek etkileşim güçleri ve markaların reklam iş birliklerinde onları seçme nedenleri.',
-      date: '17 Haziran 2026',
+      date: '7 Mayıs 2026',
       readTime: '5 dk okuma'
     },
     {
       title: 'Instagram Hesap Güvenliği ve İki Faktörlü Doğrulama',
       slug: 'instagram-hesap-guvenligi-ve-iki-faktorlu-dogrulama',
       description: 'Hesabınızın çalınmasını önleyecek güvenlik önlemleri, iki faktörlü doğrulama ayarları ve kimlik avı saldırılarından korunma.',
-      date: '17 Haziran 2026',
+      date: '4 Mayıs 2026',
       readTime: '4 dk okuma'
     },
     {
       title: 'Instagram Insights (İstatistikler) Nasıl Okunur?',
       slug: 'instagram-insights-istatistikler-nasil-okunur',
       description: 'Profil istatistiklerinizdeki erişim, etkileşim, gösterim ve demografik verileri doğru okuyarak içerik stratejinizi geliştirin.',
-      date: '17 Haziran 2026',
+      date: '1 Mayıs 2026',
       readTime: '6 dk okuma'
     }
   ];
