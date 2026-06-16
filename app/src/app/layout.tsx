@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
+import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import LayoutWrapper from "./layout-wrapper";
 import Script from "next/script";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-outfit",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Instascope | Instagram Analiz ve Büyüme Araçları",
@@ -38,8 +53,12 @@ export default function RootLayout({
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="tr">
+    <html lang="tr" className={`${outfit.variable} ${plusJakarta.variable}`}>
       <head>
+        {/* Preconnect to external domains for LCP improvement */}
+        <link rel="preconnect" href="https://instascope-aba22.firebaseapp.com" />
+        <link rel="preconnect" href="https://www.googleapis.com" />
+
         {showAds && (
           <Script
             async
@@ -50,12 +69,13 @@ export default function RootLayout({
         )}
         {gaId && (
           <>
+            {/* GTM: lazyOnload so it doesn't block main thread */}
             <Script
               async
               src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
+              strategy="lazyOnload"
             />
-            <Script id="google-analytics" strategy="afterInteractive">
+            <Script id="google-analytics" strategy="lazyOnload">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}

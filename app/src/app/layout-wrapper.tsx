@@ -18,7 +18,7 @@ import {
   X
 } from 'lucide-react';
 import { auth, googleProvider } from '../lib/firebase';
-import { signInWithPopup, signOut, onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -57,6 +57,8 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   const handleLogin = async () => {
     try {
+      // Lazy-load Firebase Auth to prevent iframe loading on initial page load
+      const { signInWithPopup } = await import('firebase/auth');
       await signInWithPopup(auth, googleProvider);
       setIsDropdownOpen(false);
     } catch (error: any) {
@@ -67,6 +69,8 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   const handleLogout = async () => {
     try {
+      // Lazy-load Firebase Auth
+      const { signOut } = await import('firebase/auth');
       await signOut(auth);
       setIsDropdownOpen(false);
     } catch (error) {
@@ -368,6 +372,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
                   />
                   <button 
                     type="submit" 
+                    aria-label="Bültene kaydol"
                     disabled={newsletterStatus === 'loading'}
                     style={{
                       background: 'linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)))',

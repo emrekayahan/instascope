@@ -191,7 +191,7 @@ export default function Home() {
               <div style={{ width: '4rem', height: '4rem', borderRadius: '50%', background: 'rgba(124, 58, 237, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'hsl(var(--accent-secondary))' }}>
                 <Shield size={28} />
               </div>
-              <h4 style={{ fontSize: '1.25rem' }}>%100 Güvenli & Gizli</h4>
+              <h3 style={{ fontSize: '1.25rem' }}>%100 Güvenli & Gizli</h3>
               <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.9rem', lineHeight: 1.5 }}>Hesap şifreniz ya da cookie bilgilerinizi asla talep etmiyoruz. Tüm hesaplamalar tarayıcınızda yapılır.</p>
             </div>
             
@@ -199,7 +199,7 @@ export default function Home() {
               <div style={{ width: '4rem', height: '4rem', borderRadius: '50%', background: 'rgba(124, 58, 237, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'hsl(var(--accent-secondary))' }}>
                 <Zap size={28} />
               </div>
-              <h4 style={{ fontSize: '1.25rem' }}>Hızlı İstemci Tarafı</h4>
+              <h3 style={{ fontSize: '1.25rem' }}>Hızlı İstemci Tarafı</h3>
               <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.9rem', lineHeight: 1.5 }}>Tüm formlar ve hesaplayıcılar tarayıcı performansı odaklı çalışır. Sunucu bekleme süresi yoktur.</p>
             </div>
 
@@ -207,7 +207,7 @@ export default function Home() {
               <div style={{ width: '4rem', height: '4rem', borderRadius: '50%', background: 'rgba(124, 58, 237, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'hsl(var(--accent-secondary))' }}>
                 <TrendingUp size={28} />
               </div>
-              <h4 style={{ fontSize: '1.25rem' }}>SEO Uyumlu Altyapı</h4>
+              <h3 style={{ fontSize: '1.25rem' }}>SEO Uyumlu Altyapı</h3>
               <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.9rem', lineHeight: 1.5 }}>Sayfa açılış hızları ve SEO optimizasyonları sayesinde organik aramalarda hızla yükselir.</p>
             </div>
           </div>

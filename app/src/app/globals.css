@@ -1,5 +1,5 @@
 /* Premium HSL Design System & Global Styles */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+/* Fonts are loaded via next/font/google in layout.tsx — no @import needed */
 
 :root {
   /* HSL Color Palette */
@@ -22,8 +22,8 @@
   --shadow-md: 0 4px 20px -4px rgba(0, 0, 0, 0.7);
   --shadow-lg: 0 10px 30px -10px rgba(0, 0, 0, 0.9);
   
-  --font-title: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-title: var(--font-outfit), 'Outfit', sans-serif;
+  --font-body: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
 }
 
 * {
@@ -199,6 +199,7 @@ button, input, select, textarea {
   font-size: 1.5rem;
   background: linear-gradient(135deg, #fff, hsl(var(--accent-secondary)));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
   align-items: center;
@@ -215,7 +216,8 @@ button, input, select, textarea {
 .nav-link {
   font-size: 0.925rem;
   font-weight: 500;
-  color: hsl(var(--text-secondary));
+  /* WCAG AA fix: changed from text-secondary (low contrast) to a brighter tone */
+  color: hsl(215 25% 85%);
 }
 
 .nav-link:hover, .nav-link.active {
@@ -232,7 +234,7 @@ button, input, select, textarea {
 
 .footer-grid {
   display: grid;
-  grid-template-cols: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 4rem;
   margin-bottom: 3rem;
 }
@@ -280,13 +282,13 @@ button, input, select, textarea {
 /* Responsive Breakpoints */
 @media (max-width: 968px) {
   .footer-grid {
-    grid-template-cols: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-cols: 1fr;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
   .container {
