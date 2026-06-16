@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Reklam Politikası | Instascope',
+  description: 'Instascope üzerinde sunulan reklam yerleşimleri, kullanıcı deneyimi standartlarımız ve üçüncü taraf reklam ağlarına ilişkin politikalarımız.',
+  alternates: {
+    canonical: '/reklam-politikasi',
+  }
+};
 
 export default function ReklamPolitikasi() {
   return (

@@ -13,8 +13,28 @@ import {
 } from 'lucide-react';
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Emre Kayahan",
+    "url": "https://instascope.com.tr/hakkimizda",
+    "sameAs": [
+      "https://github.com/emrekayahan"
+    ],
+    "jobTitle": "Social Media Analyst & Developer",
+    "worksFor": {
+      "@type": "Brand",
+      "name": "Instascope",
+      "url": "https://instascope.com.tr"
+    }
+  };
+
   return (
     <div style={{ padding: '4rem 0', display: 'flex', flexDirection: 'column', gap: '6rem' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       
       {/* Hero Section */}
       <section className="container" style={{ textAlign: 'center', maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>

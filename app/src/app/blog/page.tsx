@@ -1,6 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import { Calendar, Clock, BookOpen, Sparkles } from 'lucide-react';
+import { Calendar, Clock, BookOpen, User } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Instagram Büyüme & SEO Rehberi | Instascope Blog',
+  description: 'Instagram algoritması, etkileşim oranları, Reels izlenmeleri, organik takipçi artırma ve sosyal medya büyüme stratejileri üzerine güncel rehberler.',
+  alternates: {
+    canonical: '/blog',
+  }
+};
 
 export default function Blog() {
   const posts = [
@@ -59,6 +68,62 @@ export default function Blog() {
       description: 'Düzenli paylaşım yapmak başarının anahtarıdır. Aylık sosyal medya planlaması yapmanızı sağlayacak içerik takvimi hazırlama rehberi.',
       date: '16 Haziran 2026',
       readTime: '5 dk okuma'
+    },
+    {
+      title: 'Instagram Biyografi Linki Nasıl Optimize Edilir?',
+      slug: 'instagram-biyografi-linki-nasil-optimize-edilir',
+      description: 'Profilinizi ziyaret eden kullanıcıları takipçiye dönüştürmek için biyografi bağlantınızı nasıl tasarlamalısınız? En iyi taktikler.',
+      date: '17 Haziran 2026',
+      readTime: '5 dk okuma'
+    },
+    {
+      title: 'Instagram Reels İzlenmesini Artırmanın 7 Yolu',
+      slug: 'instagram-reels-izlenmesini-artirmanin-7-yolu',
+      description: 'Reels izlenme sayılarınızı katlamak için uygulayabileceğiniz 7 pratik strateji. Kanca kullanımı, müzik seçimi ve süre ayarı.',
+      date: '17 Haziran 2026',
+      readTime: '6 dk okuma'
+    },
+    {
+      title: 'Bot Takipçi vs Organik Takipçi: Hesabınıza Zararları',
+      slug: 'bot-takipci-vs-organik-takipci',
+      description: 'Bot takipçi satın almanın profilinizin erişimini nasıl sıfırladığını ve algoritmanın neden cezalandırdığını teknik verilerle inceleyin.',
+      date: '17 Haziran 2026',
+      readTime: '6 dk okuma'
+    },
+    {
+      title: 'Instagram Story Etkileşimi Nasıl Artırılır?',
+      slug: 'instagram-story-etkilesimi-nasil-artirilir',
+      description: 'Hikayelerinizin görüntüleme sayılarını artıracak çıkartma kullanımı, anketler, soru-cevaplar ve algoritma tetikleme yöntemleri.',
+      date: '17 Haziran 2026',
+      readTime: '5 dk okuma'
+    },
+    {
+      title: "Instagram'da Keşfet'e Düşme Taktikleri",
+      slug: 'instagramda-kesfete-dusme-taktikleri',
+      description: 'Gönderilerinizin Keşfet sayfasına çıkması ve takipçi olmayan kitleye ulaşması için yapılması gereken anahtar optimizasyonlar.',
+      date: '17 Haziran 2026',
+      readTime: '7 dk okuma'
+    },
+    {
+      title: 'Mikro Influencer Nedir, Markalar Neden Tercih Eder?',
+      slug: 'mikro-influencer-nedir-markalar-neden-tercih-eder',
+      description: '10k-50k takipçi aralığındaki hesapların yüksek etkileşim güçleri ve markaların reklam iş birliklerinde onları seçme nedenleri.',
+      date: '17 Haziran 2026',
+      readTime: '5 dk okuma'
+    },
+    {
+      title: 'Instagram Hesap Güvenliği ve İki Faktörlü Doğrulama',
+      slug: 'instagram-hesap-guvenligi-ve-iki-faktorlu-dogrulama',
+      description: 'Hesabınızın çalınmasını önleyecek güvenlik önlemleri, iki faktörlü doğrulama ayarları ve kimlik avı saldırılarından korunma.',
+      date: '17 Haziran 2026',
+      readTime: '4 dk okuma'
+    },
+    {
+      title: 'Instagram Insights (İstatistikler) Nasıl Okunur?',
+      slug: 'instagram-insights-istatistikler-nasil-okunur',
+      description: 'Profil istatistiklerinizdeki erişim, etkileşim, gösterim ve demografik verileri doğru okuyarak içerik stratejinizi geliştirin.',
+      date: '17 Haziran 2026',
+      readTime: '6 dk okuma'
     }
   ];
 
@@ -93,9 +158,12 @@ export default function Blog() {
             <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', flexGrow: 1, lineHeight: 1.5 }}>
               {post.description}
             </p>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(255, 255, 255, 0.05)', paddingTop: '1rem', marginTop: '0.5rem' }}>
+              <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                <User size={12} /> Emre Kayahan
+              </span>
               <Link href={`/blog/${post.slug}`} style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 700, fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }} className="read-more-link">
-                Okumaya Devam Et &rarr;
+                Oku &rarr;
               </Link>
             </div>
           </article>

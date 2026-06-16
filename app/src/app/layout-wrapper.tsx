@@ -138,6 +138,11 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
                   Nasıl Çalışır?
                 </Link>
               </li>
+              <li>
+                <Link href="/hakkimizda" className={`nav-link ${pathname === '/hakkimizda' ? 'active' : ''}`}>
+                  Hakkımızda
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -321,6 +326,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
                 <li><Link href="/#tools" className="footer-link">Araçlar</Link></li>
                 <li><Link href="/blog" className="footer-link">Blog & Rehberler</Link></li>
                 <li><Link href="/nasil-calisir" className="footer-link">Nasıl Çalışır?</Link></li>
+                <li><Link href="/hakkimizda" className="footer-link">Hakkımızda</Link></li>
               </ul>
             </div>
             
@@ -409,10 +415,10 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
             <div>
               © {new Date().getFullYear()} Instascope.com.tr - Tüm hakları saklıdır. Verileriniz tamamen cihazınızda (client-side) işlenir, sunucuya aktarılmaz.
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.8rem', color: 'hsl(var(--text-muted))', flexWrap: 'wrap' }}>
-              <span>Mersis No: 0123-4567-8901-2345 (Placeholder)</span>
-              <span>Ticaret Sicil No: 987654 (Placeholder)</span>
-              <span>Adres: İstanbul, Türkiye</span>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.8rem', color: 'hsl(var(--text-muted))', flexWrap: 'wrap', textAlign: 'center' }}>
+              <span>Instascope, Emre Kayahan tarafından bireysel olarak yürütülen bağımsız bir Instagram analiz platformudur.</span>
+              <span>E-posta: demadatr@gmail.com</span>
+              <span>Konum: İstanbul, Türkiye</span>
             </div>
           </div>
         </div>

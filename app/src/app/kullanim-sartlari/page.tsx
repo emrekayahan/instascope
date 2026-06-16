@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Kullanım Şartları | Instascope',
+  description: 'Instascope web sitesinde sunulan ücretsiz analiz araçlarının kullanım koşullarını, yasal hak ve sorumlulukları bu sayfadan okuyabilirsiniz.',
+  alternates: {
+    canonical: '/kullanim-sartlari',
+  }
+};
 
 export default function KullanimSartlari() {
   return (
@@ -14,12 +23,12 @@ export default function KullanimSartlari() {
 
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>2. Instagram Entegrasyonu Hakkında</h3>
         <p>
-          Bu internet sitesinin Instagram (Meta Inc.) ile herhangi bir resmi/gayriresmi bağı bulunmamaktadır. Sitemizde sunulan araçlar Instagram API'larını izinsiz taramaz (scraping yapmaz), şifre veya oturum çerezi gibi kritik bilgileri asla talep etmez.
+          Bu internet sitesinin Instagram (Meta Inc.) ile herhangi bir resmi/gayriresmi bağı bulunmamaktadır. Sitemizde sunulan araçlar Instagram API\'larını izinsiz taramaz (scraping yapmaz), şifre veya oturum çerezi gibi kritik bilgileri asla talep etmez.
         </p>
 
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>3. Fikri Mülkiyet</h3>
         <p>
-          Sitede yer alan özel tasarım öğeleri, şablonlar, logolar ve yazılımlar Instascope'a ait olup izinsiz kopyalanamaz veya dağıtılamaz.
+          Sitede yer alan özel tasarım öğeleri, şablonlar, logolar ve yazılımlar Instascope\'a ait olup izinsiz kopyalanamaz veya dağıtılamaz.
         </p>
       </div>
     </div>

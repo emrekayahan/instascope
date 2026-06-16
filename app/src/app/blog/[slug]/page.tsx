@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Calendar, Clock, ArrowLeft, Sparkles, BookOpen } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, User } from 'lucide-react';
 import type { Metadata } from 'next';
 
 interface PostContent {
@@ -166,6 +166,149 @@ const POSTS_DB: { [slug: string]: PostContent } = {
         <p>İçeriklerinizin maksimum kişiye ulaşması için doğru gün ve saatleri seçmek hayati önem taşır. Sektörünüze özel paylaşım saatlerini öğrenmek için <Link href="/araclar/en-iyi-paylasim-saati" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>En İyi Paylaşım Saati</Link> aracını takviminizi oluştururken rehber alabilirsiniz.</p>
       </>
     )
+  },
+  'instagram-biyografi-linki-nasil-optimize-edilir': {
+    title: 'Instagram Biyografi Linki Nasıl Optimize Edilir?',
+    date: '17 Haziran 2026',
+    readTime: '5 dk okuma',
+    description: 'Profilinizi ziyaret eden kullanıcıları takipçiye dönüştürmek için biyografi bağlantınızı nasıl tasarlamalısınız? En iyi taktikler.',
+    content: (
+      <>
+        <p>Instagram profillerinde sadece tek bir tıklanabilir linke izin verildiği için bu alan profilinizin en değerli gayrimenkulüdür. Ziyaretçileri potansiyel müşterilere, bülten abonelerine veya diğer sosyal medya platformlarındaki takipçilerinize dönüştürmek burayı nasıl kullandığınıza bağlıdır.</p>
+        
+        <h2>Link Optimizasyonunun Temelleri</h2>
+        <ul>
+          <li><strong>Tek Bir Çatı Altında Toplayın:</strong> Birden fazla yönlendirmeyi tek bir sayfada birleştiren Link-in-Bio araçları kullanın.</li>
+          <li><strong>Temiz ve Anlaşılır Başlıklar:</strong> Kullanıcıların nereye tıklayacaklarını net bir şekilde bilmelerini sağlayın.</li>
+          <li><strong>Önem sırası:</strong> En kritik bağlantınızı en üst sıraya yerleştirin.</li>
+        </ul>
+        
+        <h2>Kendi Sayfanızı Tasarlayın</h2>
+        <p>Saniyeler içinde tamamen ücretsiz, reklamsız ve şık bir yönlendirme sayfası oluşturup Instagram profilinize eklemek için <Link href="/araclar/biyografi-link-olusturucu" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Biyografi Link Oluşturucu</Link> aracımızı kullanabilirsiniz.</p>
+      </>
+    )
+  },
+  'instagram-reels-izlenmesini-artirmanin-7-yolu': {
+    title: 'Instagram Reels İzlenmesini Artırmanın 7 Yolu',
+    date: '17 Haziran 2026',
+    readTime: '6 dk okuma',
+    description: 'Reels izlenme sayılarınızı katlamak için uygulayabileceğiniz 7 pratik strateji. Kanca kullanımı, müzik seçimi ve süre ayarı.',
+    content: (
+      <>
+        <p>Reels formatı son 3 yıldır Instagram'da büyümenin ve keşfet sayfasına çıkmanın tek kestirme yoludur. Ancak rekabet arttıkça, sadece video yüklemek izlenme almaya yetmiyor. Algoritmayı lehinize kullanacak teknik ayarları yapmanız şarttır.</p>
+        
+        <h2>Uygulanabilir 7 Reels Stratejisi</h2>
+        <ol>
+          <li><strong>İlk 3 Saniye Kancası:</strong> Ziyaretçinin videoyu kaydırmasını önleyecek görsel veya yazılı bir "hook" ile başlayın.</li>
+          <li><strong>Popüler Müzikler:</strong> Trend listesindeki yükseliş gösteren sesleri arka plana ekleyin.</li>
+          <li><strong>Altyazı Kullanımı:</strong> Kullanıcıların %70'inden fazlası videoları sessiz izler. Konuşmalarınızı metne dökün.</li>
+          <li><strong>Kısa Videolar:</strong> 5-12 saniye arası döngüsel videolar, yüksek tamamlama oranı getirdiğinden algoritma tarafından hızla yayılır.</li>
+          <li><strong>Saat Analizi:</strong> Gönderileri en aktif saatlerde yayına alın. En doğru saatler için <Link href="/araclar/en-iyi-paylasim-saati" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Paylaşım Saati Bulucu</Link> kullanın.</li>
+          <li><strong>Açıklama Bölümü (Caption):</strong> Ziyaretçiyi videoda daha uzun süre tutmak için açıklama alanında uzun ve değerli bir rehber yazın.</li>
+          <li><strong>Etkileşimi Tetikleyin:</strong> Yorumlarda tartışma yaratacak bir soru ile videoyu tamamlayın.</li>
+        </ol>
+      </>
+    )
+  },
+  'bot-takipci-vs-organik-takipci': {
+    title: 'Bot Takipçi vs Organik Takipçi: Hesabınıza Zararları',
+    date: '17 Haziran 2026',
+    readTime: '6 dk okuma',
+    description: 'Bot takipçi satın almanın profilinizin erişimini nasıl sıfırladığını ve algoritmanın neden cezalandırdığını teknik verilerle inceleyin.',
+    content: (
+      <>
+        <p>Birçok yeni içerik üreticisi, hesaplarını "dolu göstermek" amacıyla bot veya sahte takipçi paketlerine yönelir. Ancak bu işlem, hesabınızın organik erişimini ve gelecekteki büyüme şansını tamamen öldüren bir dijital intihardır.</p>
+        
+        <h2>Bot Takipçilerin Algoritmaya Etkisi</h2>
+        <p>Instagram algoritması bir içeriği paylaştığınızda öncelikle takipçilerinizin ufak bir kısmına (%10 gibi) gösterir. Eğer bu test grubundan olumlu tepki (beğeni, yorum, kaydetme) gelirse, içeriği daha geniş kitleye açar. Bot hesaplar etkileşim vermediği için algoritma gönderinizi "kalitesiz" olarak etiketler ve erişiminizi kalıcı olarak sınırlar.</p>
+        
+        <h2>Mevcut Durumu Ölçün</h2>
+        <p>Takipçi kitlenizin aktiflik ve etkileşim kalitesini test etmek, profil sağlığınızı doğrulamak için <Link href="/araclar/etkilesim-hesaplayici" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Etkileşim Oranı Hesaplayıcı</Link> aracımızla hesabınızı analiz etmelisiniz.</p>
+      </>
+    )
+  },
+  'instagram-story-etkilesimi-nasil-artirilir': {
+    title: 'Instagram Story Etkileşimi Nasıl Artırılır?',
+    date: '17 Haziran 2026',
+    readTime: '5 dk okuma',
+    description: 'Hikayelerinizin görüntüleme sayılarını artıracak çıkartma kullanımı, anketler, soru-cevaplar ve algoritma tetikleme yöntemleri.',
+    content: (
+      <>
+        <p>Hikayeler (Stories), takipçilerinizle en samimi ve doğrudan bağı kurduğunuz alandır. Story etkileşimlerinizin yüksek olması, ana sayfa algoritmasında da üst sıralara çıkmanıza doğrudan yardımcı olur.</p>
+        
+        <h2>Story Etkileşimlerini Uçuracak Yöntemler</h2>
+        <ul>
+          <li><strong>Etkileşim Çıkartmaları:</strong> Anket, test, kaydırma çubuğu ve soru kutularını aktif kullanın.</li>
+          <li><strong>Günün İlk Hikayesi:</strong> Günün ilk storysini sade, yüksek okunabilirlikli bir metin ve anket ile paylaşın. Bu işlem story erişim oranlarını katlar.</li>
+          <li><strong>Hikaye Anlatımı (Storytelling):</strong> Paylaşımlarınızda bir başlangıç, gelişme ve sonuç kurgusu yaratın. Ziyaretçilerin hızlıca kaydırıp geçmesini önleyin.</li>
+        </ul>
+      </>
+    )
+  },
+  'instagramda-kesfete-dusme-taktikleri': {
+    title: "Instagram'da Keşfet'e Düşme Taktikleri",
+    date: '17 Haziran 2026',
+    readTime: '7 dk okuma',
+    description: 'Gönderilerinizin Keşfet sayfasına çıkması ve takipçi olmayan kitleye ulaşması için yapılması gereken anahtar optimizasyonlar.',
+    content: (
+      <>
+        <p>Keşfet (Explore), Instagram'ın kullanıcıların ilgi alanlarına göre içerik önerdiği ana vitrindir. Keşfet'e düşmek, hesabınızın viral büyümesi ve binlerce yeni organik takipçi kazanması anlamına gelir.</p>
+        
+        <h2>Keşfet Algoritması Nasıl Tetiklenir?</h2>
+        <p>Gönderinizin Keşfet sayfasına düşmesi için ilk saatlerde yüksek oranda <strong>kaydetme (save)</strong> ve <strong>paylaşım (share)</strong> etkileşimi alması gerekir. Ziyaretçilerin kaydedeceği kadar bilgi içeren kılavuz paylaşımlar hazırlamak ve doğru etiketleri seçmek hayati önem taşır. Sektörünüze özel spam yapmayan hashtag listelerini oluşturmak için <Link href="/araclar/hashtag-onerici" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Hashtag Öneri</Link> modülümüzü kullanabilirsiniz.</p>
+      </>
+    )
+  },
+  'mikro-influencer-nedir-markalar-neden-tercih-eder': {
+    title: 'Mikro Influencer Nedir, Markalar Neden Tercih Eder?',
+    date: '17 Haziran 2026',
+    readTime: '5 dk okuma',
+    description: '10k-50k takipçi aralığındaki hesapların yüksek etkileşim güçleri ve markaların reklam iş birliklerinde onları seçme nedenleri.',
+    content: (
+      <>
+        <p>Sosyal medya pazarlamasında milyonluk hesaplar yerine, daha niş bir kitleye hitap eden ve takipçileriyle güçlü bağlara sahip olan 10.000 ila 50.000 takipçili "Mikro Influencer" hesapları yükselişe geçmiştir.</p>
+        
+        <h2>Yüksek Etkileşim ve Samimiyet Gücü</h2>
+        <p>Mikro influencer'ların en büyük avantajı, takipçileriyle kurdukları birebir diyalogdur. Bu diyalog, reklam iş birliklerinde dönüşüm oranını (satış oranını) makro hesaplara kıyasla ciddi oranda artırır. Etkileşim oranlarının doğruluğunu test etmek için <Link href="/araclar/etkilesim-hesaplayici" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Etkileşim Hesaplama</Link> aracımızdan yararlanabilirsiniz.</p>
+      </>
+    )
+  },
+  'instagram-hesap-guvenligi-ve-iki-faktorlu-dogrulama': {
+    title: 'Instagram Hesap Güvenliği ve İki Faktörlü Doğrulama',
+    date: '17 Haziran 2026',
+    readTime: '4 dk okuma',
+    description: 'Hesabınızın çalınmasını önleyecek güvenlik önlemleri, iki faktörlü doğrulama ayarları ve kimlik avı saldırılarından korunma.',
+    content: (
+      <>
+        <p>Binbir emekle büyüttüğünüz sosyal medya profilinizin güvenliği her şeyden önce gelir. Son yıllarda artan siber saldırılar ve telif hakkı bahanesiyle atılan oltalama (phishing) mesajları binlerce hesabın çalınmasına yol açmaktadır.</p>
+        
+        <h2>Zorunlu Güvenlik Önlemleri</h2>
+        <ul>
+          <li><strong>İki Faktörlü Doğrulama (2FA):</strong> SMS yerine mutlaka Google Authenticator veya Duo Mobile gibi bir kimlik doğrulama uygulaması kullanın.</li>
+          <li><strong>E-Posta Güvenliği:</strong> Instagram hesabınızın bağlı olduğu e-posta şifrenizin profil şifrenizden tamamen farklı olduğundan emin olun.</li>
+          <li><strong>Şüpheli Mesajlar:</strong> Instagram asla DM yoluyla telif ihlali uyarısı atmaz. Resmi iletişimler sadece profil ayarlarındaki "Instagram'dan E-postalar" kısmında görünür.</li>
+        </ul>
+      </>
+    )
+  },
+  'instagram-insights-istatistikler-nasil-okunur': {
+    title: 'Instagram Insights (İstatistikler) Nasıl Okunur?',
+    date: '17 Haziran 2026',
+    readTime: '6 dk okuma',
+    description: 'Profil istatistiklerinizdeki erişim, etkileşim, gösterim ve demografik verileri doğru okuyarak içerik stratejinizi geliştirin.',
+    content: (
+      <>
+        <p>İçerik üretim süreçlerinizi verilere dayandırmak, büyümenizin tek sürdürülebilir yöntemidir. Instagram'ın yerleşik istatistikler (Insights) paneli, size hedef kitleniz hakkında paha biçilmez bilgiler sunar.</p>
+        
+        <h2>Insights Panelindeki Anahtar Metrikler</h2>
+        <ul>
+          <li><strong>Erişim (Reach):</strong> Paylaşımınızı gören benzersiz hesap sayısı. Organik yayılım gücünüzü gösterir.</li>
+          <li><strong>Etkileşimdeki Hesaplar:</strong> Gönderilerinizle etkileşime giren hesap oranı.</li>
+          <li><strong>Kaydedilenler:</strong> İçeriğinizin ne kadar katma değerli ve faydalı olduğunu gösteren en değerli metrik.</li>
+        </ul>
+        <p>Verileri düzenli analiz ederek ve trend grafiklerini izleyerek büyüme stratejinizi belirleyebilirsiniz.</p>
+      </>
+    )
   }
 };
 
@@ -194,7 +337,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${baseUrl}/blog/${slug}`,
       type: 'article',
       publishedTime: '2026-06-16T00:00:00.000Z',
-      authors: ['Instascope Team'],
+      authors: ['Emre Kayahan'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -220,8 +363,10 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "datePublished": "2026-06-16T00:00:00.000Z",
     "dateModified": "2026-06-16T00:00:00.000Z",
     "author": {
-      "@type": "Organization",
-      "name": "Instascope"
+      "@type": "Person",
+      "name": "Emre Kayahan",
+      "jobTitle": "Social Media Analyst",
+      "url": "https://instascope.com.tr/hakkimizda"
     }
   };
 
@@ -250,6 +395,43 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
         <div className="blog-content" style={{ color: 'hsl(var(--text-secondary))', display: 'flex', flexDirection: 'column', gap: '1.5rem', fontSize: '1.05rem' }}>
           {post.content}
+        </div>
+
+        {/* Author Bio Box */}
+        <div style={{
+          marginTop: '3rem',
+          padding: '1.5rem',
+          background: 'rgba(255, 255, 255, 0.02)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          borderRadius: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1.25rem'
+        }}>
+          <div style={{
+            width: '3.5rem',
+            height: '3.5rem',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)))',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontWeight: 700,
+            fontSize: '1.2rem',
+            flexShrink: 0
+          }}>
+            EK
+          </div>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ fontSize: '1rem', color: 'white', fontWeight: 700 }}>Emre Kayahan</span>
+              <span style={{ fontSize: '0.7rem', color: 'hsl(var(--accent-secondary))', background: 'rgba(124, 58, 237, 0.15)', padding: '0.15rem 0.5rem', borderRadius: '9999px', fontWeight: 600 }}>Yazar</span>
+            </div>
+            <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem', color: 'hsl(var(--text-secondary))', lineHeight: 1.4 }}>
+              Instascope platformunun kurucusu ve baş analistidir. Sosyal medya pazarlaması, organik büyüme teknikleri ve algoritma analizleri üzerine uzmanlaşmıştır.
+            </p>
+          </div>
         </div>
       </article>
     </div>

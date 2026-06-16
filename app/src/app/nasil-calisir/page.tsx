@@ -1,6 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import { ShieldCheck, HelpCircle, BarChart3, Rocket, Clock, Info } from 'lucide-react';
+import { ShieldCheck, HelpCircle, BarChart3, Rocket, Clock } from 'lucide-react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Nasıl Çalışır? | Instascope',
+  description: 'Instascope analiz araçlarının çalışma mekanizmasını, etkileşim oranı hesaplama formüllerini ve hashtag önerme mantığını şeffaflıkla inceleyin.',
+  alternates: {
+    canonical: '/nasil-calisir',
+  }
+};
 
 export default function NasilCalisir() {
   return (

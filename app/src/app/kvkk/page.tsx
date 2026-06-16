@@ -1,5 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'KVKK Aydınlatma Metni | Instascope',
+  description: 'Instascope web sitesinde işlenen kişisel verilerinize ilişkin KVKK aydınlatma metnini ve yasal haklarınızı bu sayfadan öğrenebilirsiniz.',
+  alternates: {
+    canonical: '/kvkk',
+  }
+};
 
 export default function Kvkk() {
   return (
@@ -10,7 +19,7 @@ export default function Kvkk() {
 
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>1. Veri Sorumlusu</h3>
         <p>
-          6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, Instascope web platformu olarak, kullanıcılarımızın kişisel verilerinin güvenliğine ve gizliliğine son derece önem vermekteyiz.
+          6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, Instascope web platformu adına veri sorumlusu sıfatıyla Emre Kayahan, kullanıcılarımızın kişisel verilerinin güvenliğine ve gizliliğine son derece önem vermektedir.
         </p>
 
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>2. İşlenen Kişisel Veriler ve İşleme Amaçları</h3>

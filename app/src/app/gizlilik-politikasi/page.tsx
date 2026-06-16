@@ -1,5 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Gizlilik Politikası | Instascope',
+  description: 'Instascope kullanıcılarının kişisel verilerinin korunması ve gizlilik haklarına ilişkin politikalarımızı bu sayfada inceleyebilirsiniz.',
+  alternates: {
+    canonical: '/gizlilik-politikasi',
+  }
+};
 
 export default function GizlilikPolitikasi() {
   return (
@@ -10,7 +19,7 @@ export default function GizlilikPolitikasi() {
         
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>1. Veri Sorumlusu</h3>
         <p>
-          Instascope ("Biz"), kullanıcı gizliliğine son derece önem vermekteyiz. Bu Gizlilik Politikası, internet sitemizi ziyaret eden ve hizmetlerimizden yararlanan kullanıcıların kişisel verilerinin korunması amacıyla hazırlanmıştır.
+          Instascope, Emre Kayahan tarafından bireysel olarak işletilen bağımsız bir web sitesidir. KVKK kapsamında veri sorumlusu sıfatıyla Emre Kayahan, bu Gizlilik Politikası'nı kullanıcılarımızın kişisel verilerinin korunması amacıyla hazırlamıştır.
         </p>
 
         <h3 style={{ fontSize: '1.5rem', marginTop: '1rem' }}>2. Toplanan Veriler ve Amacı</h3>

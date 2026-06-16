@@ -1,4 +1,13 @@
 import React from 'react';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Çerez Politikası | Instascope',
+  description: 'Instascope üzerinde kullanılan çerezlerin (cookies) türleri, kullanım amaçları ve çerez tercihlerinizi nasıl yönetebileceğiniz hakkında bilgi edinin.',
+  alternates: {
+    canonical: '/cerez-politikasi',
+  }
+};
 
 export default function CerezPolitikasi() {
   return (
