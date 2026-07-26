@@ -12,17 +12,126 @@ import {
   ChevronRight,
   ArrowLeft,
   Sparkles,
-  Lock
+  Lock,
+  Heart
 } from 'lucide-react';
 import { auth, googleProvider } from '../../lib/firebase';
 import { onAuthStateChanged, signInWithPopup, User } from 'firebase/auth';
 
 interface HistoryItem {
   id: string;
-  type: 'etkilesim' | 'hashtag' | 'saat';
+  type: 'etkilesim' | 'hashtag' | 'saat' | 'saglik';
   date: string;
   inputs: any;
   result: any;
+}
+
+function TrendChart({ items }: { items: HistoryItem[] }) {
+  // Filter for 'etkilesim' items
+  const etkilesimItems = [...items]
+    .filter(item => item.type === 'etkilesim' && item.result?.er !== undefined)
+    .reverse(); // oldest to newest for chronological plot
+
+  if (etkilesimItems.length < 2) return null;
+
+  const data = etkilesimItems.map((item) => ({
+    label: item.date.split(' ')[0] + ' ' + item.date.split(' ')[1].substring(0, 3), // e.g. '15 Haz'
+    value: typeof item.result.er === 'string' ? parseFloat(item.result.er) : item.result.er,
+    fullDate: item.date
+  }));
+
+  const width = 600;
+  const height = 200;
+  const paddingX = 45;
+  const paddingY = 30;
+
+  const values = data.map(d => d.value);
+  const maxVal = Math.max(...values) * 1.1; // 10% headroom
+  const minVal = Math.max(0, Math.min(...values) * 0.9); // 10% floor, min 0
+  const valRange = maxVal - minVal || 1;
+
+  const points = data.map((d, i) => {
+    const x = paddingX + (i / (data.length - 1)) * (width - paddingX * 2);
+    const y = height - paddingY - ((d.value - minVal) / valRange) * (height - paddingY * 2);
+    return { x, y, ...d };
+  });
+
+  const pathD = points.reduce((acc, p, i) => {
+    return i === 0 ? `M ${p.x} ${p.y}` : `${acc} L ${p.x} ${p.y}`;
+  }, '');
+
+  // For the gradient area underneath the line
+  const areaD = points.length > 0 
+    ? `${pathD} L ${points[points.length - 1].x} ${height - paddingY} L ${points[0].x} ${height - paddingY} Z`
+    : '';
+
+  return (
+    <div className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.25rem', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '2rem' }}>
+      <div>
+        <h3 style={{ fontSize: '1.25rem', color: 'white', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <Sparkles size={18} style={{ color: 'hsl(var(--accent-secondary))' }} /> Etkileşim Oranı Değişim Trendi
+        </h3>
+        <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+          Son {etkilesimItems.length} etkileşim hesaplamanızın zaman içindeki değişim grafiği.
+        </p>
+      </div>
+
+      <div style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch' }}>
+        <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', minWidth: '500px', height: 'auto', overflow: 'visible' }}>
+          <defs>
+            <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="hsl(var(--accent-secondary))" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="hsl(var(--accent-secondary))" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+
+          {/* Grid lines (horizontal) */}
+          {[0, 0.25, 0.5, 0.75, 1].map((ratio, idx) => {
+            const y = paddingY + ratio * (height - paddingY * 2);
+            const val = maxVal - ratio * valRange;
+            return (
+              <g key={idx}>
+                <line x1={paddingX} y1={y} x2={width - paddingX} y2={y} stroke="rgba(255,255,255,0.05)" strokeDasharray="3 3" />
+                <text x={paddingX - 10} y={y + 4} fill="hsl(var(--text-muted))" fontSize="10" textAnchor="end">
+                  %{val.toFixed(1)}
+                </text>
+              </g>
+            );
+          })}
+
+          {/* Gradient Area */}
+          {areaD && <path d={areaD} fill="url(#chartGradient)" />}
+
+          {/* Line Path */}
+          {pathD && (
+            <path 
+              d={pathD} 
+              fill="none" 
+              stroke="hsl(var(--accent-secondary))"
+              strokeWidth="3" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          )}
+
+          {/* Data Points & Labels */}
+          {points.map((p, i) => (
+            <g key={i}>
+              <circle cx={p.x} cy={p.y} r="5" fill="hsl(var(--accent-secondary))" stroke="white" strokeWidth="2" />
+              {/* Value label above dot */}
+              <text x={p.x} y={p.y - 10} fill="white" fontSize="10" fontWeight="bold" textAnchor="middle">
+                %{p.value.toFixed(2)}
+              </text>
+              {/* Date label below axis */}
+              <text x={p.x} y={height - 10} fill="hsl(var(--text-muted))" fontSize="10" textAnchor="middle">
+                {p.label}
+              </text>
+            </g>
+          ))}
+        </svg>
+      </div>
+    </div>
+  );
 }
 
 export default function GecmisAnalizlerim() {
@@ -150,6 +259,7 @@ export default function GecmisAnalizlerim() {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <TrendChart items={historyList} />
           {historyList.map((item) => (
             <div 
               key={item.id} 
@@ -177,12 +287,14 @@ export default function GecmisAnalizlerim() {
                     {item.type === 'etkilesim' && <BarChart3 size={18} />}
                     {item.type === 'hashtag' && <Rocket size={18} />}
                     {item.type === 'saat' && <Clock size={18} />}
+                    {item.type === 'saglik' && <Heart size={18} style={{ color: 'hsl(var(--accent-secondary))' }} />}
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.15rem' }}>
                       {item.type === 'etkilesim' && 'Etkileşim Oranı Analizi'}
                       {item.type === 'hashtag' && 'Hashtag Öneri Analizi'}
                       {item.type === 'saat' && 'En İyi Paylaşım Saati'}
+                      {item.type === 'saglik' && 'Profil Sağlık Skoru'}
                     </h3>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.8rem', color: 'hsl(var(--text-muted))', marginTop: '0.2rem' }}>
                       <Calendar size={12} />
@@ -195,6 +307,7 @@ export default function GecmisAnalizlerim() {
                   href={
                     item.type === 'etkilesim' ? '/araclar/etkilesim-hesaplayici' :
                     item.type === 'hashtag' ? '/araclar/hashtag-onerici' :
+                    item.type === 'saglik' ? '/araclar/profil-sagligi' :
                     '/araclar/en-iyi-paylasim-saati'
                   }
                   className="btn-secondary"
@@ -224,6 +337,14 @@ export default function GecmisAnalizlerim() {
                         <li>Ort. Yorum: <strong style={{ color: 'white' }}>{item.inputs.comments?.toLocaleString()}</strong></li>
                       </>
                     )}
+                    {item.type === 'saglik' && (
+                      <>
+                        <li>Takipçi: <strong style={{ color: 'white' }}>{item.inputs.followers?.toLocaleString()}</strong></li>
+                        <li>Takip Edilen: <strong style={{ color: 'white' }}>{item.inputs.following?.toLocaleString()}</strong></li>
+                        <li>Ort. Beğeni: <strong style={{ color: 'white' }}>{item.inputs.likes?.toLocaleString()}</strong></li>
+                        <li>Ort. Yorum: <strong style={{ color: 'white' }}>{item.inputs.comments?.toLocaleString()}</strong></li>
+                      </>
+                    )}
                     {item.type === 'hashtag' && (
                       <li>Kategori: <strong style={{ color: 'white' }}>{item.inputs.niche}</strong></li>
                     )}
@@ -241,6 +362,12 @@ export default function GecmisAnalizlerim() {
                   {item.type === 'etkilesim' && (
                     <div>
                       Etkileşim Oranı: <strong style={{ color: 'hsl(var(--accent-secondary))', fontSize: '1.1rem' }}>%{item.result.er}</strong>
+                      <p style={{ fontSize: '0.8rem', color: 'hsl(var(--text-secondary))', marginTop: '0.25rem' }}>{item.result.statusText}</p>
+                    </div>
+                  )}
+                  {item.type === 'saglik' && (
+                    <div>
+                      Sağlık Skoru: <strong style={{ color: item.result.statusColor || 'hsl(var(--accent-secondary))', fontSize: '1.1rem' }}>{item.result.healthScore}/100</strong>
                       <p style={{ fontSize: '0.8rem', color: 'hsl(var(--text-secondary))', marginTop: '0.25rem' }}>{item.result.statusText}</p>
                     </div>
                   )}

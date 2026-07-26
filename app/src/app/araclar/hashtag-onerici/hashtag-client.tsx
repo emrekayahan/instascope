@@ -157,6 +157,33 @@ export default function HashtagClient() {
               </button>
             </div>
 
+            {/* Dijital Ürün Satış CTA (Priority 3.1) */}
+            <div style={{
+              marginTop: '1rem',
+              padding: '1.25rem 1.5rem',
+              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(236, 72, 153, 0.08) 100%)',
+              border: '1px solid rgba(124, 58, 237, 0.2)',
+              borderRadius: '12px',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem'
+            }}>
+              <strong style={{ color: 'white', fontSize: '1rem' }}>Daha Fazla Hashtag ve Planlı İçerik mi İster Siniz?</strong>
+              <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.85rem', margin: 0, lineHeight: 1.4 }}>
+                Sektörünüze özel 500+ kategorize edilmiş premium hashtag listesi ve 90 günlük hazır Instagram içerik takvimi şablonunu hemen indirin.
+              </p>
+              <a 
+                href="https://gumroad.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-primary" 
+                style={{ padding: '0.6rem 1.25rem', fontSize: '0.85rem', marginTop: '0.5rem', alignSelf: 'center', background: 'linear-gradient(135deg, #a855f7, #db2777)', boxShadow: 'none' }}
+              >
+                90 Günlük İçerik Takvimini İndir
+              </a>
+            </div>
+
             {showShareOptions && (
               <div style={{
                 display: 'flex',

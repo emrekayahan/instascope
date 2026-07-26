@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   BarChart3, 
@@ -9,10 +11,68 @@ import {
   Zap, 
   TrendingUp, 
   Sparkles,
-  HelpCircle
+  HelpCircle,
+  Heart,
+  Lightbulb,
+  ArrowRight
 } from 'lucide-react';
 
+const TIPS = [
+  {
+    title: "İlk 3 Saniye Kancası (Hook)",
+    content: "Reels videolarınızın ilk 3 saniyesinde merak uyandıran bir başlık veya görsel hareket kullanarak izleyicinin kaydırmasını önleyin. Algoritma tamamlama oranını en önemli metrik olarak okur."
+  },
+  {
+    title: "Günün İlk Hikayesi İvmesi",
+    content: "Günün ilk hikayesinde mutlaka bir anket, test veya kaydırma çubuğu gibi etkileşim çıkartması kullanın. İlk hikayede gelen yüksek etkileşim, gün boyu paylaşacağınız diğer hikayelerin erişimini %40'a yakın artırır."
+  },
+  {
+    title: "Hashtag Dağılım Altın Kuralı",
+    content: "Gönderilerinizde popülerliği milyonları bulan etiketler yerine, 5 adet mikro (10k-50k post), 5 adet orta (50k-200k post) ve 3 adet niş (içeriğinizi tam tanımlayan) hashtag kombinasyonu kullanın."
+  },
+  {
+    title: "Zamanlama Stratejisi",
+    content: "Takipçilerinizin en aktif olduğu saatleri tespit ettikten sonra, gönderinizi bu saatten tam 15-20 dakika önce paylaşın. Böylece ilk etkileşim grubu yayına girdiği anda içerik akışa düşmüş olur."
+  },
+  {
+    title: "Karşılıklı Etkileşim İvmesi",
+    content: "Gönderinizi paylaştıktan sonraki ilk 30 dakika boyunca profilinizde aktif kalın. Gelen yorumlara anında ve soru sorarak yanıt verin. Algoritma bu hızlı sohbeti organik yayılma sinyali olarak algılar."
+  },
+  {
+    title: "Takipçi/Takip Dengesi",
+    content: "Takip ettiğiniz kişi sayısının takipçi sayınızdan fazla olması profilinizin spam/bot görünmesine neden olur. Sağlıklı bir algoritma puanı için takipçi sayınızın en az 5 kat daha fazla olmasını hedefleyin."
+  },
+  {
+    title: "Reels Sessiz İzlenme Dostu Altyazılar",
+    content: "Instagram kullanıcılarının %70'inden fazlası videoları sessiz izler. Reels videolarınıza mutlaka otomatik altyazı veya dikkat çekici metinler ekleyin; böylece izlenme sürelerinizi (dwell time) uzatırsınız."
+  },
+  {
+    title: "Dış Bağlantı Optimizasyonu",
+    content: "Biyografinizde tek bir link yerine şık bir Link-in-Bio sayfası kullanarak kullanıcıları hem web sitenize, hem diğer sosyal ağlarınıza, hem de güncel kampanyalarınıza zahmetsizce yönlendirin."
+  },
+  {
+    title: "Bot ve Pasif Takipçi Temizliği",
+    content: "Bot hesaplar gönderilerinize etkileşim vermediği için etkileşim oranınızı (Engagement Rate) düşürür ve algoritmanın içeriğinizi gizlemesine yol açar. Düzenli aralıklarla pasif hesapları temizleyin."
+  },
+  {
+    title: "Story Anlatım Kurgusu",
+    content: "Hikayelerinizi rastgele paylaşmak yerine bir hikaye akışı (başlangıç, gelişme ve eyleme çağrı) oluşturun. İnsanlar bir seriyi izlediklerinde profilinizde kalma süreleri ciddi oranda artar."
+  }
+];
+
 export default function Home() {
+  const [tipIndex, setTipIndex] = useState(0);
+
+  useEffect(() => {
+    // Select tip based on day of the month
+    const day = new Date().getDate();
+    setTipIndex(day % TIPS.length);
+  }, []);
+
+  const handleNextTip = () => {
+    setTipIndex((prevIndex) => (prevIndex + 1) % TIPS.length);
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -68,6 +128,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Daily Tip Widget (Priority 1.2) */}
+      <section className="container" style={{ maxWidth: '750px' }}>
+        <div className="glass-card" style={{
+          background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.04) 0%, rgba(236, 72, 153, 0.04) 100%)',
+          border: '1px solid rgba(124, 58, 237, 0.15)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.25rem',
+          position: 'relative',
+          padding: '2rem'
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'hsl(var(--accent-secondary))' }}>
+              <Lightbulb size={20} />
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Günün Instagram İpucu</span>
+            </div>
+            <button 
+              onClick={handleNextTip}
+              className="btn-secondary"
+              style={{ padding: '0.35rem 0.75rem', fontSize: '0.75rem', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.08)' }}
+            >
+              Başka Bir İpucu
+            </button>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <h3 style={{ fontSize: '1.25rem', color: 'white', fontWeight: 700 }}>
+              {TIPS[tipIndex].title}
+            </h3>
+            <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+              {TIPS[tipIndex].content}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Tools Showcase */}
       <section id="tools" className="container" style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
         <div style={{ textAlign: 'center' }}>
@@ -80,7 +175,30 @@ export default function Home() {
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
           gap: '2rem'
         }}>
-          {/* Card 1 */}
+          {/* Card 1: Profil Sağlığı (Yeni Combined Tool) */}
+          <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', border: '1px solid rgba(124, 58, 237, 0.2)' }}>
+            <div style={{ 
+              width: '4rem', 
+              height: '4rem', 
+              borderRadius: '16px', 
+              background: 'rgba(168, 85, 247, 0.15)', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              color: '#a855f7'
+            }}>
+              <Heart size={32} />
+            </div>
+            <h3 style={{ fontSize: '1.5rem', color: 'white' }}>Profil Sağlık Skoru</h3>
+            <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', flexGrow: 1, lineHeight: 1.5 }}>
+              Profilinizin etkileşim oranını, takipçi dengesini ve genel durumunu analiz ederek 100 üzerinden puanlayın.
+            </p>
+            <Link href="/araclar/profil-sagligi" className="btn-primary" style={{ textAlign: 'center', width: '100%', background: 'linear-gradient(135deg, #a855f7, #db2777)' }}>
+              Skorunu Öğren
+            </Link>
+          </div>
+
+          {/* Card 2 */}
           <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ 
               width: '4rem', 
@@ -103,7 +221,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Card 2 */}
+          {/* Card 3 */}
           <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ 
               width: '4rem', 
@@ -126,7 +244,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 4 */}
           <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ 
               width: '4rem', 
@@ -149,7 +267,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Card 4 - New Bio Link Creator */}
+          {/* Card 5 */}
           <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ 
               width: '4rem', 
@@ -169,6 +287,29 @@ export default function Home() {
             </p>
             <Link href="/araclar/biyografi-link-olusturucu" className="btn-primary" style={{ textAlign: 'center', width: '100%' }}>
               Link Tasarla
+            </Link>
+          </div>
+
+          {/* Card 6: Instagram Kişiliği (Quiz) */}
+          <div className="glass-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', border: '1px solid rgba(168, 85, 247, 0.15)' }}>
+            <div style={{ 
+              width: '4rem', 
+              height: '4rem', 
+              borderRadius: '16px', 
+              background: 'rgba(236, 72, 153, 0.15)', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              color: 'hsl(var(--accent-secondary))'
+            }}>
+              <HelpCircle size={32} />
+            </div>
+            <h3 style={{ fontSize: '1.5rem', color: 'white' }}>Hesap Tipi Quizi</h3>
+            <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', flexGrow: 1, lineHeight: 1.5 }}>
+              Instagram profilinizin hangi kişilik tipinde (Influencer, Marka vb.) olduğunu 5 hızlı soruyla test edin.
+            </p>
+            <Link href="/araclar/instagram-tipim" className="btn-primary" style={{ textAlign: 'center', width: '100%' }}>
+              Testi Başlat
             </Link>
           </div>
         </div>

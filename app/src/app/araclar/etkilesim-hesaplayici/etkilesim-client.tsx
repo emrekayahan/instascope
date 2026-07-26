@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import { BarChart3, Share2, Copy, Check } from 'lucide-react';
 import { auth } from '../../../../src/lib/firebase';
 
@@ -283,6 +284,69 @@ export default function EtkilesimClient() {
                     }} />
                   </div>
                 </div>
+              </div>
+            </div>
+
+            {/* Bağlamsal Blog Önerileri (Priority 1.4) */}
+            <div style={{
+              marginTop: '1rem',
+              padding: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.01)',
+              border: '1px solid rgba(255, 255, 255, 0.03)',
+              borderRadius: '12px',
+              textAlign: 'left'
+            }}>
+              <h4 style={{ fontSize: '1.1rem', marginBottom: '0.75rem', color: 'white', fontWeight: 600, marginTop: 0 }}>
+                Etkileşim Oranınızı Artırmak İçin Rehberlerimiz
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {result < 3 ? (
+                  <>
+                    <Link 
+                      href="/blog/instagram-etkilesim-orani-nedir-nasil-hesaplanir" 
+                      style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)', color: 'white' }}
+                      className="dropdown-item"
+                    >
+                      <span style={{ fontSize: '0.9rem' }}>Instagram Etkileşim Oranı Nedir, Nasıl Hesaplanır?</span>
+                      <span style={{ color: 'hsl(var(--accent-secondary))', fontSize: '0.85rem' }}>Oku &rarr;</span>
+                    </Link>
+                    <Link 
+                      href="/blog/organik-takipci-artirma-yontemleri" 
+                      style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)', color: 'white' }}
+                      className="dropdown-item"
+                    >
+                      <span style={{ fontSize: '0.9rem' }}>Organik Takipçi Artırma Yöntemleri ve Stratejiler</span>
+                      <span style={{ color: 'hsl(var(--accent-secondary))', fontSize: '0.85rem' }}>Oku &rarr;</span>
+                    </Link>
+                    <Link 
+                      href="/blog/bot-takipci-vs-organik-takipci" 
+                      style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)', color: 'white' }}
+                      className="dropdown-item"
+                    >
+                      <span style={{ fontSize: '0.9rem' }}>Bot Takipçi vs Organik Takipçi: Hesabınıza Zararları</span>
+                      <span style={{ color: 'hsl(var(--accent-secondary))', fontSize: '0.85rem' }}>Oku &rarr;</span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link 
+                      href="/blog/instagramda-kesfete-dusme-taktikleri" 
+                      style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)', color: 'white' }}
+                      className="dropdown-item"
+                    >
+                      <span style={{ fontSize: '0.9rem' }}>Instagram'da Keşfet'e Düşme Taktikleri</span>
+                      <span style={{ color: 'hsl(var(--accent-secondary))', fontSize: '0.85rem' }}>Oku &rarr;</span>
+                    </Link>
+                    <Link 
+                      href="/blog/instagram-reels-izlenmesini-artirmanin-7-yolu" 
+                      style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.05)', color: 'white' }}
+                      className="dropdown-item"
+                    >
+                      <span style={{ fontSize: '0.9rem' }}>Instagram Reels İzlenmesini Artırmanın 7 Yolu</span>
+                      <span style={{ color: 'hsl(var(--accent-secondary))', fontSize: '0.85rem' }}>Oku &rarr;</span>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
 

@@ -1,0 +1,6 @@
+{
+  "firestore": {
+    "database": "instascope",
+    "rules": "firestore.rules"
+  }
+}

@@ -150,6 +150,48 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
             </ul>
           </nav>
 
+          {/* Hamburger Menu Button for Mobile */}
+          <button
+            className="mobile-menu-toggle"
+            aria-label={isMobileMenuOpen ? "Menüyü kapat" : "Menüyü aç"}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Mobile Nav Dropdown */}
+          {isMobileMenuOpen && (
+            <nav className="mobile-nav">
+              <ul className="mobile-nav-links">
+                <li>
+                  <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                    Ana Sayfa
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#tools" onClick={() => setIsMobileMenuOpen(false)}>
+                    Araçlar
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blog" onClick={() => setIsMobileMenuOpen(false)}>
+                    Blog & SEO
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/nasil-calisir" onClick={() => setIsMobileMenuOpen(false)}>
+                    Nasıl Çalışır?
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/hakkimizda" onClick={() => setIsMobileMenuOpen(false)}>
+                    Hakkımızda
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          )}
+
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             {/* User Profile / Login */}
             {!loading && (
@@ -422,6 +464,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', fontSize: '0.8rem', color: 'hsl(var(--text-muted))', flexWrap: 'wrap', textAlign: 'center' }}>
               <span>Instascope, Emre Kayahan tarafından bireysel olarak yürütülen bağımsız bir Instagram analiz platformudur.</span>
+              <span>Destek: <a href="https://buymeacoffee.com" target="_blank" rel="noopener noreferrer" style={{ color: 'hsl(var(--accent-secondary))', fontWeight: 600 }}>Kahve Ismarla ☕</a></span>
               <span>E-posta: demadatr@gmail.com</span>
               <span>Konum: İstanbul, Türkiye</span>
             </div>

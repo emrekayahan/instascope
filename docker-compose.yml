@@ -6,10 +6,21 @@ services:
     environment:
       - NODE_ENV=production
       - NEXT_PUBLIC_APP_URL=https://instascope.com.tr
+      # Firebase — instascope projesi (databaseId: instascope)
+      - NEXT_PUBLIC_FIREBASE_API_KEY=AIzaSyArPVKqhEVzMfZfl3IUx72d5zzectxgsh0
+      - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=instascope-aba22.firebaseapp.com
+      - NEXT_PUBLIC_FIREBASE_PROJECT_ID=instascope-aba22
+      - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=instascope-aba22.firebasestorage.app
+      - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=1054591969909
+      - NEXT_PUBLIC_FIREBASE_APP_ID=1:1054591969909:web:46fcaba458c9980448e63c
+      # Diğer
+      - NEXT_PUBLIC_SHOW_ADS=false
+      - NEXT_PUBLIC_GA_ID=G-D8MPJ29K22
     restart: unless-stopped
-    network_mode: bridge
     ports:
       - "3000:3000"
+    networks:
+      - internal
 
   nginx:
     image: nginx:alpine
@@ -18,7 +29,8 @@ services:
     depends_on:
       - app
     restart: unless-stopped
-    network_mode: bridge
+    networks:
+      - internal
 
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -28,4 +40,9 @@ services:
     depends_on:
       - nginx
     restart: unless-stopped
-    network_mode: bridge
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/instascope/documents {
+
+    // Blog makaleleri — herkes okuyabilir, sadece auth kullanıcılar yazabilir
+    match /published_content/{docId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    // Diğer tüm koleksiyonlar — sadece auth kullanıcılar
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
