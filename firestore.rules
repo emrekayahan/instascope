@@ -2,15 +2,21 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/instascope/documents {
 
-    // Blog makaleleri — herkes okuyabilir, sadece auth kullanıcılar yazabilir
+    // Blog makaleleri — herkes yayınlanmış olanları okuyabilir, sadece admin yazabilir
     match /published_content/{docId} {
       allow read: if true;
-      allow write: if request.auth != null;
+      allow write: if request.auth != null && request.auth.token.email == "emrekayahan@gmail.com";
     }
 
-    // Diğer tüm koleksiyonlar — sadece auth kullanıcılar
+    // Newsletter aboneleri — herkes yazabilir (kayıt formu), sadece admin okuyabilir
+    match /newsletter_subscribers/{docId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null && request.auth.token.email == "emrekayahan@gmail.com";
+    }
+
+    // Diğer tüm koleksiyonlar — sadece admin
     match /{document=**} {
-      allow read, write: if request.auth != null;
+      allow read, write: if request.auth != null && request.auth.token.email == "emrekayahan@gmail.com";
     }
   }
 }
